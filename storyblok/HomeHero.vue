@@ -70,7 +70,7 @@ const header = computed(() => {
       </article>
     </div>
     <div class="lg:absolute lg:bottom-0 lg:inset-x-0">
-      <div class="py-12 max-w-xl mx-auto lg:max-w-full">
+      <div class="lg:px-12 py-12 max-w-xl mx-auto lg:max-w-full">
         <div class="xl:max-w-6xl lg:mx-auto">
           <div class="text-gray-400 text-xs uppercase tracking-widest">
             <NuxtLink
