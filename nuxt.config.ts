@@ -66,6 +66,12 @@ export default defineNuxtConfig({
     accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN,
   },
 
+  runtimeConfig: {
+    public: {
+      appEnv: process.env.NUXT_PUBLIC_APP_ENV,
+    }
+  },
+
   tailwindcss: {
     cssPath: '~/assets/scss/main.scss'
   },
