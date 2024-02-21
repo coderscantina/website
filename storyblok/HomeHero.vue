@@ -26,12 +26,17 @@ const header = computed(() => {
           />
         </NuxtLink>
         <div class="mt-8 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-0 lg:w-6/12">
-          <img
-            v-if="blok.image"
-            class="h-56 w-full object-cover object-center sm:h-56 shadow-xl lg:inset-0 lg:h-full lg:object-cernter lg:shadow-none lg:rounded-none"
-            :src="blok.image.filename"
-            :alt="blok.image.alt"
-          />
+          <picture v-if="blok.image">
+            <source
+              media="(min-width: 1024px)"
+              :srcset="`${blok.image.filename}/m/1080x1080`"
+            />
+            <img
+              :src="`${blok.image.filename}/m/544x366`"
+              :alt="blok.image.alt"
+              class="h-56 w-full object-cover object-center sm:h-56 shadow-xl lg:inset-0 lg:h-full lg:shadow-none lg:rounded-none"
+            />
+          </picture>
           <svg
             class="hidden lg:block absolute inset-y-0 left-0 w-24 h-full"
             viewBox="0 0 100 100"
