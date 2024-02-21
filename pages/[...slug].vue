@@ -3,7 +3,7 @@
 const route = useRoute()
 const slug = route.params.slug || 'home'
 
-const story = await useStoryblok(slug, { version: 'draft' })
+const story = await useAsyncStoryblok(slug, { version: 'draft' })
 
 </script>
 
