@@ -1,7 +1,19 @@
 import type { UseSeoMetaInput } from '@unhead/schema'
-import type { PageStoryblok } from '~/storyblok/types'
+import type { ConfigStoryblok, PageStoryblok } from '~/storyblok/types'
 
 export default function useStoryblokHelpers() {
+  const config = useState<ConfigStoryblok>('config')
+
+  const { $preview } = useNuxtApp()
+  const version = $preview ? 'draft' : 'published'
+  const { locale } = useI18n()
+  const defaults = { version, language: locale.value }
+  async function loadConfig() {
+
+    config.value = await useAsyncStoryblok('_config', defaults)
+      .catch(() => ref(null))
+  }
+
   function setMetaFromPage(content: Pick<PageStoryblok, 'metatags'>, fallbacks?: UseSeoMetaInput) {
     if (!content.metatags && !fallbacks) {
       return
@@ -36,7 +48,13 @@ export default function useStoryblokHelpers() {
     })
   }
 
+  callOnce(async() => {
+    await loadConfig()
+  })
+
   return {
+    config,
+    defaults,
     setMetaFromPage
   }
 }
