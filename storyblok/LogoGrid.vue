@@ -2,7 +2,7 @@
 
 import type { LogoGridStoryblok } from '~/storyblok/types'
 
-const props = defineProps<{ blok: LogoGridStoryblok }>()
+defineProps<{ blok: LogoGridStoryblok }>()
 
 </script>
 
