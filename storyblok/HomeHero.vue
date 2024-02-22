@@ -51,7 +51,7 @@ const header = computed(() => {
             />
           </svg>
         </div>
-        <div class="mt-8 lg:mt-16 space-y-10">
+        <div class="mt-8 lg:mt-16 space-y-10 max-w-prose">
           <h1
             class="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight"
             v-html="header"
@@ -64,6 +64,13 @@ const header = computed(() => {
               v-for="button in blok.buttons"
               :key="button._uid"
               :blok="button"
+            />
+          </div>
+          <div v-if="blok.logos">
+            <StoryblokComponent
+              v-for="logo in blok.logos"
+              :key="logo._uid"
+              :blok="logo"
             />
           </div>
         </div>
