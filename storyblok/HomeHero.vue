@@ -14,10 +14,10 @@ const header = computed(() => {
 <template>
   <div
     v-editable="blok"
-    class="px-4 py-12 max-w-xl mx-auto lg:max-w-full lg:px-0 lg:py-20 lg:relative lg:min-h-screen "
+    class="py-20 mx-auto lg:max-w-full lg:py-32 lg:relative lg:min-h-screen "
   >
-    <div class="xl:max-w-6xl lg:mx-auto">
-      <article class="lg:w-6/12 lg:pl-12 lg:pr-8 xl:pl-0">
+    <div class="content-grid">
+      <article class="lg:w-6/12">
         <NuxtLink :to="localePath('/')">
           <img
             src="@/assets/logo.svg?url"
@@ -75,20 +75,6 @@ const header = computed(() => {
           </div>
         </div>
       </article>
-    </div>
-    <div class="lg:absolute lg:bottom-0 lg:inset-x-0">
-      <div class="lg:px-12 py-12 max-w-xl mx-auto lg:max-w-full">
-        <div class="xl:max-w-6xl lg:mx-auto">
-          <div class="text-gray-400 text-xs uppercase tracking-widest">
-            <NuxtLink
-              :to="localePath('/imprint')"
-              class="text-white hover:text-red-600"
-            >
-              Imprint &amp; Data Privacy
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
