@@ -59,6 +59,13 @@ export interface ButtonStoryblok {
   [k: string]: any;
 }
 
+export interface ConfigStoryblok {
+  menu?: MenuLinkStoryblok[];
+  _uid: string;
+  component: "config";
+  [k: string]: any;
+}
+
 export interface AssetStoryblok {
   alt?: string;
   copyright?: string;
@@ -81,7 +88,19 @@ export interface HeroStoryblok {
 }
 
 export interface HomeStoryblok {
-  body?: (ButtonStoryblok | HeroStoryblok | HomeStoryblok | HomeHeroStoryblok | PageStoryblok | SimpletextStoryblok)[];
+  body?: (
+    | ButtonStoryblok
+    | ConfigStoryblok
+    | HeroStoryblok
+    | HomeStoryblok
+    | HomeHeroStoryblok
+    | LogoStoryblok
+    | LogoGridStoryblok
+    | MenuLinkStoryblok
+    | PageStoryblok
+    | PostStoryblok
+    | SimpletextStoryblok
+  )[];
   metatags?: {
     _uid?: string;
     title?: string;
@@ -95,6 +114,7 @@ export interface HomeStoryblok {
     twitter_description?: string;
     [k: string]: any;
   };
+  menu?: MenuLinkStoryblok[];
   _uid: string;
   component: "home";
   [k: string]: any;
@@ -105,13 +125,50 @@ export interface HomeHeroStoryblok {
   bodytext?: string;
   image?: AssetStoryblok;
   buttons?: ButtonStoryblok[];
+  logos?: LogoGridStoryblok[];
   _uid: string;
   component: "home-hero";
   [k: string]: any;
 }
 
+export interface LogoStoryblok {
+  image: AssetStoryblok;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  _uid: string;
+  component: "logo";
+  [k: string]: any;
+}
+
+export interface LogoGridStoryblok {
+  header?: string;
+  logos?: LogoStoryblok[];
+  _uid: string;
+  component: "logoGrid";
+  [k: string]: any;
+}
+
+export interface MenuLinkStoryblok {
+  label?: string;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  _uid: string;
+  component: "menu_link";
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
-  body?: (ButtonStoryblok | HeroStoryblok | HomeStoryblok | HomeHeroStoryblok | PageStoryblok | SimpletextStoryblok)[];
+  body?: (
+    | ButtonStoryblok
+    | ConfigStoryblok
+    | HeroStoryblok
+    | HomeStoryblok
+    | HomeHeroStoryblok
+    | LogoStoryblok
+    | LogoGridStoryblok
+    | MenuLinkStoryblok
+    | PageStoryblok
+    | PostStoryblok
+    | SimpletextStoryblok
+  )[];
   metatags?: {
     _uid?: string;
     title?: string;
@@ -128,6 +185,12 @@ export interface PageStoryblok {
   _uid: string;
   component: "page";
   uuid?: string;
+  [k: string]: any;
+}
+
+export interface PostStoryblok {
+  _uid: string;
+  component: "Post";
   [k: string]: any;
 }
 
