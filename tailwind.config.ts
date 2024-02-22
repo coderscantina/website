@@ -1,4 +1,3 @@
-
 function rfsToClamp(fs: number, {
   rfsBase = 16,
   rfsBreakpoint = 1840,
@@ -21,6 +20,9 @@ module.exports = {
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
   ],
+  safelist: [{
+    pattern: /hljs+/,
+  }],
   theme: {
     colors: ({ colors }: { colors: any }) => ({
       inherit: colors.inherit,
@@ -40,6 +42,19 @@ module.exports = {
         800: '#b10325',
         900: '#920a24',
         950: '#500010',
+      },
+      teal: {
+        50: '#e7fff9',
+        100: '#c6ffee',
+        200: '#92ffe4',
+        300: '#4dffdb',
+        400: '#1affd1',
+        500: '#00e8b7',
+        600: '#00be97',
+        700: '#00987e',
+        800: '#007865',
+        900: '#006254',
+        950: '#003831',
       },
       gray: {
         100: '#f7fafc',
@@ -110,9 +125,13 @@ module.exports = {
           },
         },
       }),
-    }
+    },
+    hljs: {
+      theme: 'atom-one-dark',
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require('tailwind-highlightjs')
   ],
 }
