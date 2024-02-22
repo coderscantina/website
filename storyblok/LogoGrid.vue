@@ -16,6 +16,7 @@ const props = defineProps<{ blok: LogoGridStoryblok }>()
         v-editable="logo"
         :to="logo.link?.url"
         :target="logo.link?.target"
+        :title="logo.image?.alt"
         class="opacity-60 hover:opacity-100 transition-opacity duration-300"
       >
         <img
