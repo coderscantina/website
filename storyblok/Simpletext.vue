@@ -1,29 +1,28 @@
 <script setup lang="ts">
 
 import type { SimpletextStoryblok } from '~/storyblok/types'
+import ContentWrapper from '~/components/ContentWrapper.vue'
 
-const props = defineProps<{ blok: SimpletextStoryblok }>()
+defineProps<{ blok: SimpletextStoryblok }>()
 
-const header = computed(() => {
-  return (props.blok.header || '')
-    .replace(/\*\*(.*)\*\*/g, '<b class="text-red-600">$1</b>')
-    .replace(/(?:\r\n|\r|\n)/g, '<br>')
-})
 </script>
 
 <template>
-  <div v-editable="blok">
+  <ContentWrapper
+    v-editable="blok"
+    :class-name="blok.class"
+  >
     <div class="max-w-prose">
-      <h1
+      <Headline
         class="text-3xl sm:text-4xl font-bold text-gray-100"
-        v-html="header"
+        :headline="blok.header"
       />
       <Markdown
         :markdown="blok.bodytext"
         provider="storyblok"
       />
     </div>
-  </div>
+  </ContentWrapper>
 </template>
 
 <style scoped>

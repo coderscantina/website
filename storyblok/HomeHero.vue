@@ -4,11 +4,6 @@ import type { HomeHeroStoryblok } from '~/storyblok/types'
 const localePath = useLocalePath()
 const props = defineProps<{ blok: HomeHeroStoryblok }>()
 
-const header = computed(() => {
-  return (props.blok.header || '')
-    .replace(/\*\*(.*)\*\*/g, '<span class="text-red-600">$1</span>')
-    .replace(/(?:\r\n|\r|\n)/g, '<br>')
-})
 </script>
 
 <template>
@@ -52,9 +47,9 @@ const header = computed(() => {
           </svg>
         </div>
         <div class="mt-8 lg:mt-16 space-y-10 max-w-prose">
-          <h1
+          <Headline
             class="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight"
-            v-html="header"
+            :headline="blok.header"
           />
           <p class="mt-6 text-gray-500 text-xl leading-relaxed">
             {{ blok.bodytext }}
