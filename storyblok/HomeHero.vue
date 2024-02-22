@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { HomeHeroStoryblok } from '~/storyblok/types'
 
-const localePath = useLocalePath()
-const props = defineProps<{ blok: HomeHeroStoryblok }>()
+defineProps<{ blok: HomeHeroStoryblok }>()
 
 </script>
 
@@ -13,13 +12,6 @@ const props = defineProps<{ blok: HomeHeroStoryblok }>()
   >
     <div class="content-grid">
       <article class="lg:w-6/12">
-        <NuxtLink :to="localePath('/')">
-          <img
-            src="@/assets/logo.svg?url"
-            alt="The Coder's Cantina"
-            class="h-32 w-32 mt-4"
-          />
-        </NuxtLink>
         <div class="mt-8 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-0 lg:w-6/12">
           <picture v-if="blok.image">
             <source

@@ -13,6 +13,7 @@ setMetaFromPage(props.blok)
   <main
     v-editable="blok"
   >
+    <AppHeader/>
     <StoryblokComponent
       v-for="bodyBlok in blok.body"
       :key="bodyBlok._uid"
