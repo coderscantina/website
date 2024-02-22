@@ -1,5 +1,12 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
+export interface AllPostsStoryblok {
+  header?: string;
+  _uid: string;
+  component: "all-posts";
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -61,8 +68,20 @@ export interface ButtonStoryblok {
 
 export interface ConfigStoryblok {
   menu?: MenuLinkStoryblok[];
+  footer_about?: string;
+  footerMenus?: FooterMenuStoryblok[];
+  buttons?: ButtonStoryblok[];
+  copyright?: string;
   _uid: string;
   component: "config";
+  [k: string]: any;
+}
+
+export interface FooterMenuStoryblok {
+  header?: string;
+  menu?: MenuLinkStoryblok[];
+  _uid: string;
+  component: "footer-menu";
   [k: string]: any;
 }
 
@@ -89,8 +108,10 @@ export interface HeroStoryblok {
 
 export interface HomeStoryblok {
   body?: (
+    | AllPostsStoryblok
     | ButtonStoryblok
     | ConfigStoryblok
+    | FooterMenuStoryblok
     | HeroStoryblok
     | HomeStoryblok
     | HomeHeroStoryblok
@@ -149,7 +170,7 @@ export interface LogoGridStoryblok {
 
 export interface MenuLinkStoryblok {
   label?: string;
-  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "asset"}>;
   _uid: string;
   component: "menu_link";
   [k: string]: any;
@@ -157,8 +178,10 @@ export interface MenuLinkStoryblok {
 
 export interface PageStoryblok {
   body?: (
+    | AllPostsStoryblok
     | ButtonStoryblok
     | ConfigStoryblok
+    | FooterMenuStoryblok
     | HeroStoryblok
     | HomeStoryblok
     | HomeHeroStoryblok
@@ -189,6 +212,25 @@ export interface PageStoryblok {
 }
 
 export interface PostStoryblok {
+  title?: string;
+  publishedAt?: string;
+  teaser?: AssetStoryblok;
+  intro?: string;
+  content?: (
+    | AllPostsStoryblok
+    | ButtonStoryblok
+    | ConfigStoryblok
+    | FooterMenuStoryblok
+    | HeroStoryblok
+    | HomeStoryblok
+    | HomeHeroStoryblok
+    | LogoStoryblok
+    | LogoGridStoryblok
+    | MenuLinkStoryblok
+    | PageStoryblok
+    | PostStoryblok
+    | SimpletextStoryblok
+  )[];
   _uid: string;
   component: "Post";
   [k: string]: any;
