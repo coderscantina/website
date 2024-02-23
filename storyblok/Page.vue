@@ -4,6 +4,13 @@ import type { PageStoryblok } from '~/storyblok/types'
 const { setMetaFromPage } = useStoryblokHelpers()
 const props = defineProps<{ blok: PageStoryblok }>()
 
+const marginTop = computed(() => {
+  return {
+    large: '[&>:first-child:not(.content-full-width)]:mt-32',
+    _: '[&>:first-child:not(.content-full-width)]:mt-16'
+  }[props.blok.topMargin || '_']
+})
+
 setMetaFromPage(props.blok)
 
 </script>
@@ -13,7 +20,7 @@ setMetaFromPage(props.blok)
     <AppHeader/>
     <main
       v-editable="blok"
-      class="relative content-grid gap-y-16 mb-16 [&>:first-child:not(.content-full-width)]:mt-16"
+      :class="['relative content-grid gap-y-16 mb-16', marginTop]"
     >
       <StoryblokComponent
         v-for="bodyBlok in blok.body"
