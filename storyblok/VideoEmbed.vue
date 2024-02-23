@@ -14,7 +14,7 @@ const videoId = computed(() => {
 })
 
 const thumbnail = computed(() => {
-  const quality = 'maxresdefault'
+  const quality = props.blok.class === 'narrow' ? 'mqdefault' : 'maxresdefault'
   return `https://img.youtube.com/vi/${videoId.value}/${quality}.jpg`
 })
 
@@ -50,7 +50,9 @@ onMounted(fetchEmbed)
       class="relative overflow-clip cursor-pointer w-full group"
       @click="preview = false"
     >
-      <h2 class="absolute inset-x-0 top-0 bg-gradient-to-b from-black/70 to-black/0 font-semibold text-xl p-3">{{embed?.title}}</h2>
+      <h2
+        class="absolute inset-x-0 top-0 bg-gradient-to-b from-black/70 to-black/0 font-semibold text-xl p-3"
+      >{{ embed?.title }}</h2>
       <div class="inset-0 absolute flex items-center justify-center">
         <YoutubeIcon class="h-20"/>
       </div>
