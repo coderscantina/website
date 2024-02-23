@@ -1,7 +1,6 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
 export interface AllPostsStoryblok {
-  header?: string;
   _uid: string;
   component: "all-posts";
   [k: string]: any;
@@ -316,6 +315,7 @@ export interface PageStoryblok {
     twitter_description?: string;
     [k: string]: any;
   };
+  topMargin?: "" | "large";
   _uid: string;
   component: "page";
   uuid?: string;
