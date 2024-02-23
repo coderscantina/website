@@ -14,7 +14,7 @@ setMetaFromPage(props.blok)
     <AppHeader/>
     <article
       v-editable="blok"
-      class="relative content-grid gap-y-16 mb-16 [&>:first-child:not(.content-full-width)]:mt-32"
+      class="relative content-grid gap-y-24 mb-24 [&>:first-child:not(.content-full-width)]:mt-32"
     >
       <StoryblokComponent
         v-for="(bodyBlok, i) in blok.content"

@@ -13,6 +13,7 @@ const date = computed(() => {
 <template>
   <ContentWrapper
     class-name="narrow"
+    class="-mb-12"
   >
     <p class="text-gray-500 text-xs uppercase tracking-wider">{{ date }}</p>
     <Headline
