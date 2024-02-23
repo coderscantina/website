@@ -121,8 +121,10 @@ export interface HomeStoryblok {
     | PageStoryblok
     | PictureStoryblok
     | PostStoryblok
+    | PostHeaderStoryblok
     | SimpletextStoryblok
     | SnippetStoryblok
+    | VideoEmbedStoryblok
   )[];
   metatags?: {
     _uid?: string;
@@ -193,8 +195,10 @@ export interface PageStoryblok {
     | PageStoryblok
     | PictureStoryblok
     | PostStoryblok
+    | PostHeaderStoryblok
     | SimpletextStoryblok
     | SnippetStoryblok
+    | VideoEmbedStoryblok
   )[];
   metatags?: {
     _uid?: string;
@@ -243,11 +247,19 @@ export interface PostStoryblok {
     | PageStoryblok
     | PictureStoryblok
     | PostStoryblok
+    | PostHeaderStoryblok
     | SimpletextStoryblok
     | SnippetStoryblok
+    | VideoEmbedStoryblok
   )[];
   _uid: string;
   component: "Post";
+  [k: string]: any;
+}
+
+export interface PostHeaderStoryblok {
+  _uid: string;
+  component: "post-header";
   [k: string]: any;
 }
 
@@ -268,5 +280,13 @@ export interface SnippetStoryblok {
   class?: "" | "narrow";
   _uid: string;
   component: "snippet";
+  [k: string]: any;
+}
+
+export interface VideoEmbedStoryblok {
+  link: string;
+  class?: "" | "narrow";
+  _uid: string;
+  component: "video-embed";
   [k: string]: any;
 }
