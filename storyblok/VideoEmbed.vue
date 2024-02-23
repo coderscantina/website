@@ -5,7 +5,7 @@ import YoutubeIcon from '~/assets/icons/youtube.svg'
 
 const embed = ref(null)
 const preview = ref(true)
-const props = defineProps<{ blok: VideoEmbedStoryblok }>()
+const props = defineProps<{ blok: VideoEmbedStoryblok, isFirst: boolean }>()
 
 const videoId = computed(() => {
   const url = props.blok.link.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/u)
@@ -59,6 +59,7 @@ onMounted(fetchEmbed)
       <img
         :src="thumbnail"
         :alt="embed?.title"
+        :loading="isFirst ? 'eager' : 'lazy'"
         class="aspect-video w-full"
       />
       <div class="absolute inset-x-0 bottom-0 text-sm p-3">{{ $t('embedding.youtube') }}</div>

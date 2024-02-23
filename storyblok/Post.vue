@@ -17,10 +17,11 @@ setMetaFromPage(props.blok)
       class="relative content-grid gap-y-16 mb-16 [&>:first-child:not(.content-full-width)]:mt-32"
     >
       <StoryblokComponent
-        v-for="bodyBlok in blok.content"
+        v-for="(bodyBlok, i) in blok.content"
         :key="bodyBlok._uid"
         :blok="bodyBlok"
         :story="blok"
+        :is-first="i === 0"
       />
     </article>
     <AppFooter class="mt-auto"/>
