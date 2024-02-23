@@ -1,4 +1,7 @@
 {
+  "embedding": {
+    "youtube": "This video is hosted on YouTube. By clicking this video, you agree to YouTube's Terms of Services."
+  },
   "footer": {
     "copyright": "© Coder's Cantina {year}. All rights reserved."
   }
