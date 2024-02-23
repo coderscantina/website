@@ -17,15 +17,7 @@ posts.value = data.stories
 </script>
 
 <template>
-  <div
-    v-editable="blok"
-    class="pt-16"
-  >
-    <Headline
-      v-if="blok.header"
-      :headline="blok.header"
-      class="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight mb-12"
-    />
+  <div v-editable="blok">
     <div class="grid md:grid-cols-2 2xl:grid-cols-3 gap-12 sm:gap-6 md:gap-12">
       <PostCard
         v-for="post in posts"
