@@ -59,8 +59,11 @@ export type MultilinkStoryblok =
 
 export interface ButtonStoryblok {
   label: string;
-  variant: "" | "primary" | "outlined" | "ghost";
   link?: Exclude<MultilinkStoryblok, {linktype?: "asset"}>;
+  disabled?: boolean;
+  color?: "red" | "lime" | "teal";
+  variant: "" | "primary" | "outlined" | "ghost";
+  block?: boolean;
   _uid: string;
   component: "button";
   [k: string]: any;
