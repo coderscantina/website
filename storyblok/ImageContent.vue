@@ -16,7 +16,7 @@ const wrapperClass = computed(() => {
 })
 
 const imageClass = computed(() => {
-  return props.blok.order === 'right' ? 'md:left-0 md:pr-6' : '-mt-24 md:mt-0 md:right-0 md:pl-6'
+  return props.blok.order === 'right' ? 'md:left-0 md:pr-6' : '-mt-24 md:mt-0 md:right-0 md:pl-3'
 })
 
 const innerClass = computed(() => {
@@ -53,6 +53,7 @@ const innerClass = computed(() => {
             v-if="blok.image"
             :src="blok.image.filename"
             :alt="blok.image.alt"
+            :loading="isFirst ? 'eager' : 'lazy'"
             class="md:h-full md:object-cover w-full"
           />
           <div
