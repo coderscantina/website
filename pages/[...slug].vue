@@ -8,6 +8,12 @@ const { locale } = useI18n()
 
 const story = await useAsyncStoryblok(slug, { version, language: locale.value })
 
+useHead({
+  htmlAttrs: {
+    lang: locale.value,
+  },
+})
+
 </script>
 
 <template>
