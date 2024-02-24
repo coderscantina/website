@@ -19,7 +19,7 @@ setMetaFromPage(props.blok)
       :key="bodyBlok._uid"
       :blok="bodyBlok"
     />
-    <div class="-mt-16">
+    <div class="-mt-16 relative z-10">
       <div class="content-grid">
         <div class="text-gray-400 text-xs uppercase tracking-widest">
           <NuxtLink
