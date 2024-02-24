@@ -30,11 +30,11 @@ const topPoints = computed(() => {
     >
       <source
         media="(min-width: 1024px)"
-        :srcset="`${blok.image.filename}/m/1920x600`"
+        :srcset="`${blok.image.filename}/m/1920x720`"
       />
       <source
         media="(min-width: 768px)"
-        :srcset="`${blok.image.filename}/m/1024x576`"
+        :srcset="`${blok.image.filename}/m/1024x768`"
       />
       <source
         media="(min-width: 640px)"
