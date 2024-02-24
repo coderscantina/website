@@ -21,13 +21,22 @@ const bodyTextClass = computed(() => {
   }[props.blok.align]
 })
 
+const colClass = computed(() => {
+  return {
+    '2-8': 'col-start-2 col-end-8',
+    '4-10': 'col-start-4 col-end-10',
+    '6-12': 'col-start-6 col-end-12',
+    '8-14': 'col-start-8 col-end-14'
+  }[props.blok.cols] ?? ''
+})
+
 </script>
 
 <template>
   <ContentWrapper
     v-editable="blok"
     :class-name="blok.class"
-    :class="alignClass"
+    :class="[alignClass, colClass]"
   >
     <p
       v-if="blok.subheader"

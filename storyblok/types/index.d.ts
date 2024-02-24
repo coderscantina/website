@@ -396,6 +396,7 @@ export interface PostHeaderStoryblok {
 
 export interface SimpletextStoryblok {
   subheader?: string;
+  cols?: "" | "2-8" | "4-10" | "6-12" | "8-14";
   header?: string;
   bodytext?: string;
   class?: "" | "narrow";
