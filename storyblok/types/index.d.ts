@@ -156,12 +156,33 @@ export interface GridStoryblok {
 }
 
 export interface HeroStoryblok {
-  header?: string;
-  bodytext?: string;
   image?: AssetStoryblok;
-  buttons?: ButtonStoryblok[];
   clipTop?: "" | "left" | "right";
   clipBottom?: "" | "left" | "right";
+  content?: (
+    | AllPostsStoryblok
+    | AuthorStoryblok
+    | ButtonStoryblok
+    | ConfigStoryblok
+    | FactStoryblok
+    | FaqStoryblok
+    | FooterMenuStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | HomeStoryblok
+    | HomeHeroStoryblok
+    | ImageContentStoryblok
+    | LogoStoryblok
+    | LogoGridStoryblok
+    | MenuLinkStoryblok
+    | PageStoryblok
+    | PictureStoryblok
+    | PostStoryblok
+    | PostHeaderStoryblok
+    | SimpletextStoryblok
+    | SnippetStoryblok
+    | VideoEmbedStoryblok
+  )[];
   _uid: string;
   component: "hero";
   [k: string]: any;
