@@ -41,7 +41,7 @@ const topPoints = computed(() => {
         :srcset="`${blok.image.filename}/m/768x576`"
       />
       <img
-        :src="`${blok.image.filename}/m/480x400`"
+        :src="`${blok.image.filename}/m/480x600`"
         :alt="blok.image.alt"
         class="absolute inset-0 object-cover object-center w-full"
       />
