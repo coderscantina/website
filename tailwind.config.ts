@@ -43,18 +43,31 @@ module.exports = {
         900: '#920a24',
         950: '#500010',
       },
+      lime: {
+        50: '#fcffe4',
+        100: '#f7ffc4',
+        200: '#eeff90',
+        300: '#deff50',
+        400: '#c6ff00',
+        500: '#ade600',
+        600: '#86b800',
+        700: '#658b00',
+        800: '#506d07',
+        900: '#445c0b',
+        950: '#223400',
+      },
       teal: {
-        50: '#e7fff9',
-        100: '#c6ffee',
-        200: '#92ffe4',
-        300: '#4dffdb',
-        400: '#1affd1',
-        500: '#00e8b7',
-        600: '#00be97',
-        700: '#00987e',
-        800: '#007865',
-        900: '#006254',
-        950: '#003831',
+        50: '#eafff7',
+        100: '#cbffeb',
+        200: '#9cfedc',
+        300: '#5df8cc',
+        400: '#1de9b6',
+        500: '#00d0a1',
+        600: '#00aa85',
+        700: '#00886e',
+        800: '#006b57',
+        900: '#00584a',
+        950: '#00322b',
       },
       gray: {
         100: '#f7fafc',
@@ -88,7 +101,7 @@ module.exports = {
               },
             },
             hr: {
-              borderColor: theme('colors.gray.300')
+              borderColor: theme('colors.gray.300'),
             },
             h1: {
               color: theme('colors.gray.100'),
@@ -112,7 +125,7 @@ module.exports = {
               color: theme('colors.gray.400'),
               fontWeight: '600',
               fontSize: `${0.75}rem`,
-              textTransform: 'uppercase'
+              textTransform: 'uppercase',
             },
             h5: {
               color: theme('colors.gray.500'),
@@ -132,6 +145,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    require('tailwind-highlightjs')
+    require('tailwind-highlightjs'),
   ],
 }

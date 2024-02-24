@@ -13,6 +13,9 @@ defineOptions({
   <Btn
     v-editable="blok"
     :variant="blok.variant"
+    :color="blok.color"
+    :disabled="blok.disabled ? 'disabled' : undefined"
+    :block="blok.block"
     :label="blok.label"
     :href="blok.link?.url"
     :target="blok.link?.target"
@@ -21,5 +24,4 @@ defineOptions({
 </template>
 
 <style scoped>
-
 </style>

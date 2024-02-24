@@ -1,10 +1,11 @@
 <script setup lang="ts">
 
-const props = defineProps<{ className: string }>()
-
 const classMap = {
-  narrow: 'content-narrow'
+  narrow: 'content-narrow',
+  full: 'content-full-width'
 }
+
+const props = defineProps<{ className: keyof typeof classMap }>()
 
 const cls = computed(() => {
   return classMap[props.className] || ''

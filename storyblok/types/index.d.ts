@@ -1,9 +1,27 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
 export interface AllPostsStoryblok {
-  header?: string;
   _uid: string;
   component: "all-posts";
+  [k: string]: any;
+}
+
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  focus?: string;
+  [k: string]: any;
+}
+
+export interface AuthorStoryblok {
+  profile?: AssetStoryblok;
+  description?: string;
+  _uid: string;
+  component: "author";
   [k: string]: any;
 }
 
@@ -59,8 +77,11 @@ export type MultilinkStoryblok =
 
 export interface ButtonStoryblok {
   label: string;
-  variant: "" | "primary" | "outlined" | "ghost";
   link?: Exclude<MultilinkStoryblok, {linktype?: "asset"}>;
+  disabled?: boolean;
+  color?: "red" | "lime" | "teal";
+  variant: "" | "primary" | "outlined" | "ghost";
+  block?: boolean;
   _uid: string;
   component: "button";
   [k: string]: any;
@@ -77,6 +98,24 @@ export interface ConfigStoryblok {
   [k: string]: any;
 }
 
+export interface FactStoryblok {
+  value?: string;
+  color?: "" | "lime" | "red" | "teal";
+  title?: string;
+  annotate?: "" | "highlight" | "circle" | "underline";
+  _uid: string;
+  component: "fact";
+  [k: string]: any;
+}
+
+export interface FaqStoryblok {
+  question?: string;
+  answer?: string;
+  _uid: string;
+  component: "faq";
+  [k: string]: any;
+}
+
 export interface FooterMenuStoryblok {
   header?: string;
   menu?: MenuLinkStoryblok[];
@@ -85,22 +124,65 @@ export interface FooterMenuStoryblok {
   [k: string]: any;
 }
 
-export interface AssetStoryblok {
-  alt?: string;
-  copyright?: string;
-  id: number;
-  filename: string;
-  name: string;
-  title?: string;
-  focus?: string;
+export interface GridStoryblok {
+  content?: (
+    | AllPostsStoryblok
+    | AuthorStoryblok
+    | ButtonStoryblok
+    | ConfigStoryblok
+    | FactStoryblok
+    | FaqStoryblok
+    | FooterMenuStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | HomeStoryblok
+    | HomeHeroStoryblok
+    | ImageContentStoryblok
+    | LogoStoryblok
+    | LogoGridStoryblok
+    | MenuLinkStoryblok
+    | PageStoryblok
+    | PictureStoryblok
+    | PostStoryblok
+    | PostHeaderStoryblok
+    | SimpletextStoryblok
+    | SnippetStoryblok
+    | VideoEmbedStoryblok
+  )[];
+  columns: "2" | "3" | "4";
+  _uid: string;
+  component: "grid";
   [k: string]: any;
 }
 
 export interface HeroStoryblok {
-  header?: string;
-  bodytext?: string;
   image?: AssetStoryblok;
-  buttons?: ButtonStoryblok[];
+  clipTop?: "" | "left" | "right";
+  clipBottom?: "" | "left" | "right";
+  content?: (
+    | AllPostsStoryblok
+    | AuthorStoryblok
+    | ButtonStoryblok
+    | ConfigStoryblok
+    | FactStoryblok
+    | FaqStoryblok
+    | FooterMenuStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | HomeStoryblok
+    | HomeHeroStoryblok
+    | ImageContentStoryblok
+    | LogoStoryblok
+    | LogoGridStoryblok
+    | MenuLinkStoryblok
+    | PageStoryblok
+    | PictureStoryblok
+    | PostStoryblok
+    | PostHeaderStoryblok
+    | SimpletextStoryblok
+    | SnippetStoryblok
+    | VideoEmbedStoryblok
+  )[];
   _uid: string;
   component: "hero";
   [k: string]: any;
@@ -109,20 +191,27 @@ export interface HeroStoryblok {
 export interface HomeStoryblok {
   body?: (
     | AllPostsStoryblok
+    | AuthorStoryblok
     | ButtonStoryblok
     | ConfigStoryblok
+    | FactStoryblok
+    | FaqStoryblok
     | FooterMenuStoryblok
+    | GridStoryblok
     | HeroStoryblok
     | HomeStoryblok
     | HomeHeroStoryblok
+    | ImageContentStoryblok
     | LogoStoryblok
     | LogoGridStoryblok
     | MenuLinkStoryblok
     | PageStoryblok
     | PictureStoryblok
     | PostStoryblok
+    | PostHeaderStoryblok
     | SimpletextStoryblok
     | SnippetStoryblok
+    | VideoEmbedStoryblok
   )[];
   metatags?: {
     _uid?: string;
@@ -154,6 +243,39 @@ export interface HomeHeroStoryblok {
   [k: string]: any;
 }
 
+export interface ImageContentStoryblok {
+  image?: AssetStoryblok;
+  order: "left" | "right";
+  content?: (
+    | AllPostsStoryblok
+    | AuthorStoryblok
+    | ButtonStoryblok
+    | ConfigStoryblok
+    | FactStoryblok
+    | FaqStoryblok
+    | FooterMenuStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | HomeStoryblok
+    | HomeHeroStoryblok
+    | ImageContentStoryblok
+    | LogoStoryblok
+    | LogoGridStoryblok
+    | MenuLinkStoryblok
+    | PageStoryblok
+    | PictureStoryblok
+    | PostStoryblok
+    | PostHeaderStoryblok
+    | SimpletextStoryblok
+    | SnippetStoryblok
+    | VideoEmbedStoryblok
+  )[];
+  class?: "" | "full" | "narrow";
+  _uid: string;
+  component: "image-content";
+  [k: string]: any;
+}
+
 export interface LogoStoryblok {
   image: AssetStoryblok;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
@@ -181,20 +303,27 @@ export interface MenuLinkStoryblok {
 export interface PageStoryblok {
   body?: (
     | AllPostsStoryblok
+    | AuthorStoryblok
     | ButtonStoryblok
     | ConfigStoryblok
+    | FactStoryblok
+    | FaqStoryblok
     | FooterMenuStoryblok
+    | GridStoryblok
     | HeroStoryblok
     | HomeStoryblok
     | HomeHeroStoryblok
+    | ImageContentStoryblok
     | LogoStoryblok
     | LogoGridStoryblok
     | MenuLinkStoryblok
     | PageStoryblok
     | PictureStoryblok
     | PostStoryblok
+    | PostHeaderStoryblok
     | SimpletextStoryblok
     | SnippetStoryblok
+    | VideoEmbedStoryblok
   )[];
   metatags?: {
     _uid?: string;
@@ -209,6 +338,7 @@ export interface PageStoryblok {
     twitter_description?: string;
     [k: string]: any;
   };
+  topMargin?: "" | "large";
   _uid: string;
   component: "page";
   uuid?: string;
@@ -231,31 +361,45 @@ export interface PostStoryblok {
   intro?: string;
   content?: (
     | AllPostsStoryblok
+    | AuthorStoryblok
     | ButtonStoryblok
     | ConfigStoryblok
+    | FactStoryblok
+    | FaqStoryblok
     | FooterMenuStoryblok
+    | GridStoryblok
     | HeroStoryblok
     | HomeStoryblok
     | HomeHeroStoryblok
+    | ImageContentStoryblok
     | LogoStoryblok
     | LogoGridStoryblok
     | MenuLinkStoryblok
     | PageStoryblok
     | PictureStoryblok
     | PostStoryblok
+    | PostHeaderStoryblok
     | SimpletextStoryblok
     | SnippetStoryblok
+    | VideoEmbedStoryblok
   )[];
   _uid: string;
   component: "Post";
   [k: string]: any;
 }
 
+export interface PostHeaderStoryblok {
+  _uid: string;
+  component: "post-header";
+  [k: string]: any;
+}
+
 export interface SimpletextStoryblok {
-  header?: string;
   subheader?: string;
+  header?: string;
   bodytext?: string;
   class?: "" | "narrow";
+  align?: "left" | "center" | "right";
   _uid: string;
   component: "simpletext";
   [k: string]: any;
@@ -268,5 +412,13 @@ export interface SnippetStoryblok {
   class?: "" | "narrow";
   _uid: string;
   component: "snippet";
+  [k: string]: any;
+}
+
+export interface VideoEmbedStoryblok {
+  link: string;
+  class?: "" | "narrow";
+  _uid: string;
+  component: "video-embed";
   [k: string]: any;
 }
