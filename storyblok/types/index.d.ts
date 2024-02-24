@@ -160,6 +160,8 @@ export interface HeroStoryblok {
   bodytext?: string;
   image?: AssetStoryblok;
   buttons?: ButtonStoryblok[];
+  clipTop?: "" | "left" | "right";
+  clipBottom?: "" | "left" | "right";
   _uid: string;
   component: "hero";
   [k: string]: any;
