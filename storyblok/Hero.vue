@@ -1,40 +1,70 @@
 <script setup lang="ts">
 import type { HeroStoryblok } from '~/storyblok/types'
-const props = defineProps<{ blok: HeroStoryblok }>()
 
-const header = computed(() => {
-  return (props.blok.header || '')
-    .replace(/\*\*(.*)\*\*/g, '<b class="text-red-600">$1</b>')
-    .replace(/(?:\r\n|\r|\n)/g, '<br>')
+const props = defineProps<{ blok: HeroStoryblok, isFirst: boolean }>()
+
+const bottomPoints = computed(() => {
+  return props.blok.clipBottom === 'left'
+    ? '0,0 0,100 100,100'
+    : '0,100 100,100 100,0'
+})
+
+const topPoints = computed(() => {
+  return props.blok.clipTop === 'left'
+    ? '0,0 0,100, 100,0'
+    : '0,0 100,100 100,0'
 })
 
 </script>
 <template>
   <div
     v-editable="blok"
-    class="content-full-width"
+    :class="['content-full-width overflow-clip relative', {
+      'pt-24': isFirst,
+      '-mt-20': blok.clipTop && !isFirst,
+       '-mb-20': blok.clipBottom
+    }]"
   >
     <img
       v-if="blok.image"
       :src="blok.image.filename"
       :alt="blok.image.alt"
-      class="w-full h-96 object-cover object-center"
+      class="absolute inset-0 object-cover object-center w-full"
     />
-    <div class="content-grid">
-      <div class="max-w-prose">
-        <h1
-          class="text-3xl sm:text-4xl font-bold text-gray-100"
-          v-html="header"
-        />
-        <p class="mt-6">{{ blok.bodytext }}</p>
-      </div>
-      <div class="space-x-4 mt-4">
-        <StoryblokComponent
-          v-for="bodyBlok in blok.buttons"
-          :key="bodyBlok._uid"
-          :blok="bodyBlok"
-        />
-      </div>
+    <svg
+      v-if="blok.clipTop"
+      class="absolute h-16 w-full top-0"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        class="text-gray-900"
+        fill="currentColor"
+        :points="topPoints"
+      />
+    </svg>
+    <svg
+      v-if="blok.clipBottom"
+      class="absolute h-16 w-full bottom-0"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        class="text-gray-900"
+        fill="currentColor"
+        :points="bottomPoints"
+      />
+    </svg>
+    <div class="content-grid py-24 relative z-1">
+      <StoryblokComponent
+        v-for="content in blok.content"
+        :key="content._uid"
+        :blok="content"
+      />
     </div>
   </div>
 </template>
