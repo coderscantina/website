@@ -22,15 +22,30 @@ const topPoints = computed(() => {
     :class="['content-full-width overflow-clip relative', {
       'pt-24': isFirst,
       '-mt-20': blok.clipTop && !isFirst,
-       '-mb-20': blok.clipBottom
+      '-mb-20': blok.clipBottom
     }]"
   >
-    <img
+    <picture
       v-if="blok.image"
-      :src="blok.image.filename"
-      :alt="blok.image.alt"
-      class="absolute inset-0 object-cover object-center w-full"
-    />
+    >
+      <source
+        media="(min-width: 1024px)"
+        :srcset="`${blok.image.filename}/m/1920x600`"
+      />
+      <source
+        media="(min-width: 768px)"
+        :srcset="`${blok.image.filename}/m/1024x576`"
+      />
+      <source
+        media="(min-width: 640px)"
+        :srcset="`${blok.image.filename}/m/768x576`"
+      />
+      <img
+        :src="`${blok.image.filename}/m/480x400`"
+        :alt="blok.image.alt"
+        class="absolute inset-0 object-cover object-center w-full"
+      />
+    </picture>
     <svg
       v-if="blok.clipTop"
       class="absolute h-16 w-full top-0"
