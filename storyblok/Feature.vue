@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FeatureStoryblok } from '~/storyblok/types'
 
-const props = defineProps<{ blok: FeatureStoryblok }>()
+const props = defineProps<{ blok: FeatureStoryblok, isFirst?: boolean }>()
 
 const imageSize = computed(() => {
   const sizes = {
@@ -84,6 +84,7 @@ const imageClass = computed(() => {
           :src="`${blok.image.filename}/m/${imageSize}`"
           :alt="blok.image.alt"
           :class="imageClass"
+          :loading="isFirst ? 'eager' : 'lazy'"
         />
         <span>{{ blok.header }}</span>
       </h3>
