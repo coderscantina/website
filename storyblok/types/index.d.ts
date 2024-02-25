@@ -169,8 +169,7 @@ export interface GridStoryblok {
 
 export interface HeroStoryblok {
   image?: AssetStoryblok;
-  clipTop?: "" | "left" | "right";
-  clipBottom?: "" | "left" | "right";
+  contentPadding?: "" | "sm" | "md" | "lg" | "xl";
   content?: (
     | AllPostsStoryblok
     | AuthorStoryblok
@@ -196,7 +195,8 @@ export interface HeroStoryblok {
     | SnippetStoryblok
     | VideoEmbedStoryblok
   )[];
-  contentPadding?: "" | "sm" | "md" | "lg" | "xl";
+  clipTop?: "" | "left" | "right";
+  clipBottom?: "" | "left" | "right";
   _uid: string;
   component: "hero";
   [k: string]: any;
@@ -415,9 +415,10 @@ export interface PostHeaderStoryblok {
 
 export interface SimpletextStoryblok {
   subheader?: string;
-  cols?: "" | "2-8" | "3-9" | "4-10" | "6-12" | "7-13" | "8-14";
+  logo?: AssetStoryblok;
   header?: string;
   bodytext?: string;
+  cols?: "" | "2-8" | "3-9" | "4-10" | "6-12" | "7-13" | "8-14";
   class?: "" | "narrow";
   align?: "left" | "center" | "right";
   _uid: string;
