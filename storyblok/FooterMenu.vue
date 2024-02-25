@@ -2,7 +2,12 @@
 
 import type { FooterMenuStoryblok } from '~/storyblok/types'
 
+const localePath = useLocalePath()
 defineProps<{ blok: FooterMenuStoryblok }>()
+
+function href({ url, cached_url }: { url: string, cached_url: string }) {
+  return url.trim() ? url : localePath(`/${cached_url}`)
+}
 
 </script>
 
@@ -16,7 +21,7 @@ defineProps<{ blok: FooterMenuStoryblok }>()
         v-for="item in blok.menu"
         :key="item._uid"
         v-editable="item"
-        :href="item.link?.url"
+        :to="href(item?.link)"
         :target="item.link?.target"
         class="font-semibold text-gray-500 hover:text-red-600 focus-visible:text-red-600 transition-colors"
         active-class="text-red-600"
