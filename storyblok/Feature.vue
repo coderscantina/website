@@ -4,12 +4,23 @@ import type { FeatureStoryblok } from '~/storyblok/types'
 const props = defineProps<{ blok: FeatureStoryblok }>()
 
 const imageSize = computed(() => {
-  return {
-    '': '',
-    sm: 'x24',
-    md: 'x32',
-    lg: 'x64'
-  }[props.blok.imageSize ?? '']
+  const sizes = {
+    left: {
+      '': '',
+      sm: '24x',
+      md: '32x',
+      lg: '64x'
+    },
+    top: {
+      '': '',
+      sm: 'x24',
+      md: 'x32',
+      lg: 'x64'
+    }
+  }
+  const size = props.blok.imagePosition === 'top' ? sizes.top : sizes.left
+
+  return size[props.blok.imageSize ?? '']
 })
 
 const wrapperClass = computed(() => {
@@ -22,6 +33,23 @@ const wrapperClass = computed(() => {
 })
 
 const imageClass = computed(() => {
+  const sizes = {
+    left: {
+      '': '',
+      sm: 'w-5',
+      md: 'w-8',
+      lg: 'w-16'
+    },
+    top: {
+      '': '',
+      sm: 'h-5',
+      md: 'h-8',
+      lg: 'h-16'
+    }
+  }
+
+  const size = props.blok.imagePosition === 'top' ? sizes.top : sizes.left
+
   return [
     {
       '': '',
@@ -29,46 +57,39 @@ const imageClass = computed(() => {
       inline: 'mr-3 inline-block',
       top: 'mb-4',
     }[props.blok.imagePosition ?? ''],
-    {
-      '': '',
-      sm: 'h-5',
-      md: 'h-8',
-      lg: 'h-16'
-    }[props.blok.imageSize ?? '']
+    size[props.blok.imageSize ?? '']
   ]
 })
 
 </script>
 
 <template>
-  <ContentWrapper>
-    <div
-      v-editable="blok"
-      :class="wrapperClass"
-    >
-      <img
-        v-if="blok.image?.filename && blok.imagePosition !== 'inline'"
-        :src="`${blok.image.filename}/m/${imageSize}`"
-        :alt="blok.image.alt"
-        :class="imageClass"
-      />
-      <div>
-        <h3
-          v-if="blok.header"
-          class="font-bold text-gray-100 mb-1 flex items-center"
-        >
-          <img
-            v-if="blok.image?.filename && blok.imagePosition === 'inline'"
-            :src="`${blok.image.filename}/m/${imageSize}`"
-            :alt="blok.image.alt"
-            :class="imageClass"
-          />
-          <span>{{ blok.header }}</span>
-        </h3>
-        <Markdown :markdown="blok.bodytext"/>
-      </div>
+  <div
+    v-editable="blok"
+    :class="wrapperClass"
+  >
+    <img
+      v-if="blok.image?.filename && blok.imagePosition !== 'inline'"
+      :src="`${blok.image.filename}/m/${imageSize}`"
+      :alt="blok.image.alt"
+      :class="[imageClass, 'shrink-0 grow-0']"
+    />
+    <div>
+      <h3
+        v-if="blok.header"
+        class="font-bold text-gray-100 mb-1 flex items-center"
+      >
+        <img
+          v-if="blok.image?.filename && blok.imagePosition === 'inline'"
+          :src="`${blok.image.filename}/m/${imageSize}`"
+          :alt="blok.image.alt"
+          :class="imageClass"
+        />
+        <span>{{ blok.header }}</span>
+      </h3>
+      <Markdown :markdown="blok.bodytext"/>
     </div>
-  </ContentWrapper>
+  </div>
 </template>
 
 <style scoped>
