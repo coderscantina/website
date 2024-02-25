@@ -43,7 +43,7 @@ const colClass = computed(() => {
   >
     <p
       v-if="blok.subheader"
-      class="mb-3 text-xs text-red-600 font-semibold uppercase tracking-wider"
+      class="mb-3 text-xs text-red-500 font-semibold uppercase tracking-widest drop-shadow-[0_0_3px_rgba(0,0,0,.75)]"
     >
       {{ blok.subheader }}
     </p>
