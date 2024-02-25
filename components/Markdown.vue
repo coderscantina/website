@@ -44,7 +44,7 @@ function onClick(e: MouseEvent) {
   }
 
   const href = (e.target as HTMLLinkElement).href
-  if (!/^https?:/.test(href)) {
+  if (/^https?:/.test(href)) {
     return
   }
 
