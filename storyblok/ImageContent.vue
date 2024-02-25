@@ -17,7 +17,7 @@ const wrapperClass = computed(() => {
 
 const imageClass = computed(() => {
   return [
-    props.blok.imageFit === 'contain' ? 'w-full z-[-1]' : 'w-1/2 md:absolute md:object-cover md:h-full md:top-0 z-[-1]',
+    props.blok.imageFit === 'contain' ? 'w-full z-[-1]' : 'md:w-1/2 md:absolute md:object-cover md:h-full md:top-0 z-[-1]',
     props.blok.imageFit !== 'contain'
       ? (props.blok.order === 'right' ? '-mb-10 md:mb-0 md:left-0 md:pr-6' : '-mt-10 md:mt-0 md:right-0 md:pl-3')
       : ''
