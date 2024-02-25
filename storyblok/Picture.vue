@@ -11,7 +11,7 @@ defineProps<{ blok: PictureStoryblok, isFirst: boolean }>()
     :class-name="blok.class"
   >
     <img
-      :src="blok.image.filename"
+      :src="`${blok.image.filename}/m/`"
       :alt="blok.image.alt"
       :width="blok.image.width"
       :height="blok.image.height"

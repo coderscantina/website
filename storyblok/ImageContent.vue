@@ -62,7 +62,7 @@ const clipPoints = computed(() => {
         <div class="relative md:h-full w-full">
           <img
             v-if="blok.image"
-            :src="blok.image.filename"
+            :src="`${blok.image.filename}/m/`"
             :alt="blok.image.alt"
             :loading="isFirst ? 'eager' : 'lazy'"
             class="md:h-full md:object-cover w-full"
