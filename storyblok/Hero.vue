@@ -15,12 +15,21 @@ const topPoints = computed(() => {
     : '0,0 100,100 100,0'
 })
 
+const wrapperClass = computed(() => {
+  return {
+    '': props.isFirst ? 'pt-24' : '',
+    sm: 'md:py-8',
+    md: 'md:py-16',
+    lg: 'md:py-24',
+    xl: 'md:py-32',
+  }[props.blok.contentPadding ?? '']
+})
+
 </script>
 <template>
   <div
     v-editable="blok"
-    :class="['content-full-width overflow-clip relative', {
-      'pt-24': isFirst,
+    :class="['content-full-width overflow-clip relative', wrapperClass, {
       '-mt-20': blok.clipTop && !isFirst,
       '-mb-20': blok.clipBottom
     }]"
@@ -48,7 +57,7 @@ const topPoints = computed(() => {
     </picture>
     <svg
       v-if="blok.clipTop"
-      class="absolute h-16 w-full top-0"
+      class="absolute h-10 md:h-16 w-full top-0"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
       fill="none"
@@ -62,7 +71,7 @@ const topPoints = computed(() => {
     </svg>
     <svg
       v-if="blok.clipBottom"
-      class="absolute h-16 w-full bottom-0"
+      class="absolute h-10 md:h-16 w-full bottom-0"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
       fill="none"

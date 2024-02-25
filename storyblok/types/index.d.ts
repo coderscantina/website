@@ -196,6 +196,7 @@ export interface HeroStoryblok {
     | SnippetStoryblok
     | VideoEmbedStoryblok
   )[];
+  contentPadding?: "" | "sm" | "md" | "lg" | "xl";
   _uid: string;
   component: "hero";
   [k: string]: any;
