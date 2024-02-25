@@ -53,7 +53,7 @@ const imageClass = computed(() => {
   return [
     {
       '': '',
-      left: 'mr-6',
+      left: 'mr-4 md:mr-6',
       inline: 'mr-3 inline-block',
       top: 'mb-4',
     }[props.blok.imagePosition ?? ''],
