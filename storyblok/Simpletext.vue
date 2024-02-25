@@ -48,7 +48,7 @@ const colClass = computed(() => {
       {{ blok.subheader }}
     </p>
     <img
-      v-if="blok.logo"
+      v-if="blok.logo?.filename"
       :src="`${blok.logo.filename}/m/x40`"
       :alt="blok.header"
       height="40"
