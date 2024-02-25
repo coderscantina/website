@@ -75,7 +75,7 @@ const imageClass = computed(() => {
       :class="imageClass"
     />
     <div>
-      <h3
+      <h2
         v-if="blok.header"
         class="font-bold text-gray-100 mb-1 flex items-center"
       >
@@ -87,7 +87,7 @@ const imageClass = computed(() => {
           :loading="isFirst ? 'eager' : 'lazy'"
         />
         <span>{{ blok.header }}</span>
-      </h3>
+      </h2>
       <Markdown :markdown="blok.bodytext"/>
     </div>
   </div>

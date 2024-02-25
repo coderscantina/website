@@ -13,9 +13,9 @@ function href({ url, cached_url }: { url: string, cached_url: string }) {
 
 <template>
   <div class="grow shrink-0 basis-full sm:basis-0">
-    <h4 class="uppercase text-xs font-bold mb-6 tracking-wider">
+    <h3 class="uppercase text-xs font-bold mb-6 tracking-wider">
       {{ blok.header }}
-    </h4>
+    </h3>
     <div class="space-y-3 flex flex-col">
       <NuxtLink
         v-for="item in blok.menu"
