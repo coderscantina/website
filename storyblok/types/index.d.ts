@@ -271,6 +271,7 @@ export interface ImageContentStoryblok {
     | VideoEmbedStoryblok
   )[];
   class?: "" | "full" | "narrow";
+  contentPadding?: "" | "sm" | "md" | "lg" | "xl";
   _uid: string;
   component: "image-content";
   [k: string]: any;

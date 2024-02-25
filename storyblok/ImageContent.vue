@@ -22,6 +22,13 @@ const imageClass = computed(() => {
 const innerClass = computed(() => {
   return [
     props.blok.order === 'right' ? 'md:col-start-2 md:ml-3' : 'md:col-start-1 md:mr-3',
+    {
+      '': '',
+      sm: 'md:py-8',
+      md: 'md:py-16',
+      lg: 'md:py-24',
+      xl: 'md:py-32',
+    }[props.blok.contentPadding ?? '']
   ].join(' ')
 })
 
