@@ -16,7 +16,19 @@ const wrapperClass = computed(() => {
 })
 
 const imageClass = computed(() => {
-  return props.blok.order === 'right' ? '-mb-10 md:mb-0 md:left-0 md:pr-6' : '-mt-10 md:mt-0 md:right-0 md:pl-3'
+  return [
+    props.blok.imageFit === 'contain' ? 'w-full z-[-1]' : 'w-1/2 md:absolute md:object-cover md:h-full md:top-0 z-[-1]',
+    props.blok.imageFit !== 'contain'
+      ? (props.blok.order === 'right' ? '-mb-10 md:mb-0 md:left-0 md:pr-6' : '-mt-10 md:mt-0 md:right-0 md:pl-3')
+      : ''
+  ]
+})
+
+const imgClass = computed(() => {
+  return [
+    props.blok.imageFit === 'contain' ? 'object-contain' : 'object-cover',
+    'w-full h-full'
+  ]
 })
 
 const innerClass = computed(() => {
@@ -54,33 +66,32 @@ const clipPoints = computed(() => {
               :blok="content"
             />
           </div>
-        </div>
-      </div>
-      <div
-        :class="['md:w-1/2 md:absolute md:top-0 z-[-1] md:object-cover md:h-full', imageClass]"
-      >
-        <div class="relative md:h-full w-full">
-          <img
-            v-if="blok.image"
-            :src="`${blok.image.filename}/m/`"
-            :alt="blok.image.alt"
-            :loading="isFirst ? 'eager' : 'lazy'"
-            class="md:h-full md:object-cover w-full"
-          />
+          <div :class="imageClass">
+            <div class="relative md:h-full w-full">
+              <img
+                v-if="blok.image"
+                :src="`${blok.image.filename}/m/`"
+                :alt="blok.image.alt"
+                :loading="isFirst ? 'eager' : 'lazy'"
+                :class="imgClass"
+              />
 
-          <svg
-            :class="['absolute h-10 md:h-16 w-full md:hidden', props.blok.order === 'left' ? 'top-0' : 'bottom-0']"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <polygon
-              class="text-gray-900"
-              fill="currentColor"
-              :points="clipPoints"
-            />
-          </svg>
+              <svg
+                v-if="blok.imageFit !== 'contain'"
+                :class="['absolute h-10 md:h-16 w-full md:hidden', props.blok.order === 'left' ? 'top-0' : 'bottom-0']"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polygon
+                  class="text-gray-900"
+                  fill="currentColor"
+                  :points="clipPoints"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </div>

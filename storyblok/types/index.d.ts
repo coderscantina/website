@@ -288,6 +288,7 @@ export interface ImageContentStoryblok {
   )[];
   class?: "" | "full" | "narrow" | "narrow-lg";
   contentPadding?: "" | "sm" | "md" | "lg" | "xl";
+  imageFit?: "" | "contain" | "cover";
   _uid: string;
   component: "image-content";
   [k: string]: any;
