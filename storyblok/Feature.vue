@@ -72,7 +72,7 @@ const imageClass = computed(() => {
       v-if="blok.image?.filename && blok.imagePosition !== 'inline'"
       :src="`${blok.image.filename}/m/${imageSize}`"
       :alt="blok.image.alt"
-      :class="[imageClass, 'shrink-0 grow-0']"
+      :class="imageClass"
     />
     <div>
       <h3
@@ -82,7 +82,7 @@ const imageClass = computed(() => {
         <img
           v-if="blok.image?.filename && blok.imagePosition === 'inline'"
           :src="`${blok.image.filename}/m/${imageSize}`"
-          :alt="blok.image.alt"
+          :alt="blok.image.alt ?? blok.header"
           :class="imageClass"
           :loading="isFirst ? 'eager' : 'lazy'"
         />
