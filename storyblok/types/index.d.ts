@@ -116,6 +116,17 @@ export interface FaqStoryblok {
   [k: string]: any;
 }
 
+export interface FeatureStoryblok {
+  image?: AssetStoryblok;
+  imagePosition: "left" | "inline" | "top";
+  imageSize?: "" | "sm" | "md" | "lg";
+  header?: string;
+  bodytext?: string;
+  _uid: string;
+  component: "Feature";
+  [k: string]: any;
+}
+
 export interface FooterMenuStoryblok {
   header?: string;
   menu?: MenuLinkStoryblok[];
@@ -132,6 +143,7 @@ export interface GridStoryblok {
     | ConfigStoryblok
     | FactStoryblok
     | FaqStoryblok
+    | FeatureStoryblok
     | FooterMenuStoryblok
     | GridStoryblok
     | HeroStoryblok
@@ -166,6 +178,7 @@ export interface HeroStoryblok {
     | ConfigStoryblok
     | FactStoryblok
     | FaqStoryblok
+    | FeatureStoryblok
     | FooterMenuStoryblok
     | GridStoryblok
     | HeroStoryblok
@@ -196,6 +209,7 @@ export interface HomeStoryblok {
     | ConfigStoryblok
     | FactStoryblok
     | FaqStoryblok
+    | FeatureStoryblok
     | FooterMenuStoryblok
     | GridStoryblok
     | HeroStoryblok
@@ -253,6 +267,7 @@ export interface ImageContentStoryblok {
     | ConfigStoryblok
     | FactStoryblok
     | FaqStoryblok
+    | FeatureStoryblok
     | FooterMenuStoryblok
     | GridStoryblok
     | HeroStoryblok
@@ -309,6 +324,7 @@ export interface PageStoryblok {
     | ConfigStoryblok
     | FactStoryblok
     | FaqStoryblok
+    | FeatureStoryblok
     | FooterMenuStoryblok
     | GridStoryblok
     | HeroStoryblok
@@ -367,6 +383,7 @@ export interface PostStoryblok {
     | ConfigStoryblok
     | FactStoryblok
     | FaqStoryblok
+    | FeatureStoryblok
     | FooterMenuStoryblok
     | GridStoryblok
     | HeroStoryblok
