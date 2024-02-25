@@ -270,7 +270,7 @@ export interface ImageContentStoryblok {
     | SnippetStoryblok
     | VideoEmbedStoryblok
   )[];
-  class?: "" | "full" | "narrow";
+  class?: "" | "full" | "narrow" | "narrow-lg";
   contentPadding?: "" | "sm" | "md" | "lg" | "xl";
   _uid: string;
   component: "image-content";

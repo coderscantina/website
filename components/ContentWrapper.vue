@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 const classMap = {
+  'narrow-lg': 'content-narrow-lg',
   narrow: 'content-narrow',
   full: 'content-full-width'
 }

@@ -41,6 +41,12 @@
     }
   }
 
+  @media (min-width: 1280px) {
+    .content-grid > .content-narrow-lg {
+      grid-column: narrow !important;
+    }
+  }
+
   .link {
     @apply font-semibold underline underline-offset-2 transition-colors hover:text-red-600 focus-visible:text-red-600
   }
