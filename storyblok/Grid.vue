@@ -5,9 +5,9 @@ const props = defineProps<{ blok: GridStoryblok, isFirst: boolean }>()
 
 const columns = computed(() => {
   return {
-    2: 'grid-cols-1 md:grid-cols-2',
-    3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-    4: 'grid-cols-1 md:grid-cols-4',
+    2: 'grid-cols-1 md:grid-cols-2 gap-6 md:gap-12',
+    3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12',
+    4: 'grid-cols-1 md:grid-cols-4 gap-6',
   }[props.blok.columns]
 })
 
@@ -17,7 +17,7 @@ const columns = computed(() => {
   <ContentWrapper>
     <div
       v-editable="blok"
-      :class="['grid gap-6', columns]"
+      :class="['grid', columns]"
     >
       <StoryblokComponent
         v-for="content in blok.content"
