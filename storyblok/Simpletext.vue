@@ -23,10 +23,12 @@ const bodyTextClass = computed(() => {
 
 const colClass = computed(() => {
   return {
-    '2-8': 'col-start-2 col-end-8',
-    '4-10': 'col-start-4 col-end-10',
-    '6-12': 'col-start-6 col-end-12',
-    '8-14': 'col-start-8 col-end-14'
+    '2-8': 'col-start-2 col-end-13 md:col-start-2 md:col-end-10 lg:col-start-2 lg:col-end-8',
+    '3-9': 'col-start-2 col-end-13 md:col-start-2 md:col-end-10 lg:col-start-3 lg:col-end-9',
+    '4-10': 'col-start-2 col-end-13 md:col-start-2 md:col-end-10 lg:col-start-4 lg:col-end-10',
+    '6-12': 'col-start-2 col-end-13 md:col-start-4 md:col-end-13 lg:col-start-6 lg:col-end-12',
+    '7-13': 'col-start-2 col-end-13 md:col-start-4 md:col-end-13 lg:col-start-7 lg:col-end-13',
+    '8-14': 'col-start-2 col-end-13 md:col-start-4 md:col-end-13 lg:col-start-8 lg:col-end-14'
   }[props.blok.cols] ?? ''
 })
 
