@@ -16,7 +16,7 @@ const wrapperClass = computed(() => {
 })
 
 const imageClass = computed(() => {
-  return props.blok.order === 'right' ? 'md:left-0 md:pr-6' : '-mt-24 md:mt-0 md:right-0 md:pl-3'
+  return props.blok.order === 'right' ? '-mb-10 md:mb-0 md:left-0 md:pr-6' : '-mt-10 md:mt-0 md:right-0 md:pl-3'
 })
 
 const innerClass = computed(() => {
