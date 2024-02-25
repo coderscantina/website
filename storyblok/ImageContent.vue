@@ -25,6 +25,10 @@ const innerClass = computed(() => {
   ].join(' ')
 })
 
+const clipPoints = computed(() => {
+  return props.blok.order === 'right' ? '0,0 0,100 100,100' : '0,0 0,100 100,0'
+})
+
 </script>
 
 <template>
@@ -34,7 +38,7 @@ const innerClass = computed(() => {
   >
     <div :class="['flex items-center gap-6 relative', wrapperClass]">
       <div :class="contentClass">
-        <div class="grid grid-cols-2">
+        <div class="grid md:grid-cols-2">
           <div :class="[innerClass, 'space-y-6']">
             <StoryblokComponent
               v-for="content in blok.content"
@@ -56,9 +60,20 @@ const innerClass = computed(() => {
             :loading="isFirst ? 'eager' : 'lazy'"
             class="md:h-full md:object-cover w-full"
           />
-          <div
-            class="absolute inset-x-0 top-0 h-36 z-1 bg-gradient-to-b from-gray-900 to-gray-900/0 md:hidden"
-          />
+
+          <svg
+            :class="['absolute h-10 md:h-16 w-full md:hidden', props.blok.order === 'left' ? 'top-0' : 'bottom-0']"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              class="text-gray-900"
+              fill="currentColor"
+              :points="clipPoints"
+            />
+          </svg>
         </div>
       </div>
     </div>
