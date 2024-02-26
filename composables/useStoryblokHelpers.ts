@@ -14,22 +14,22 @@ export default function useStoryblokHelpers() {
       .catch(() => ref(null))
   }
 
-  function setMetaFromPage(content: Pick<PageStoryblok, 'metatags'>, fallbacks?: UseSeoMetaInput) {
+  function setMetaFromPage(content: Pick<PageStoryblok, 'metatags' | 'ogImage'>, fallbacks?: UseSeoMetaInput) {
     if (!content.metatags && !fallbacks) {
       return
     }
     const meta = content.metatags || {}
     const fb = fallbacks || {}
+    const image = content.ogImage?.filename ? `${content.ogImage.filename}/m/` : undefined
 
-    // Prefer Storyblok settings over fallbacks
     const title = meta.title || fb.title
     const description = meta.description || fb.description
     const ogTitle = meta.og_title || fb.ogTitle
     const ogDescription = meta.og_description || fb.ogDescription
-    const ogImage = meta.og_image || fb.ogImage
+    const ogImage = image
     const twitterTitle = meta.twitter_title || fb.twitterTitle
     const twitterDescription = meta.twitter_description || fb.twitterDescription
-    const twitterImage = meta.twitter_image || fb.twitterImage
+    const twitterImage = image
 
     const { title: omitted, ...fallbacksWithoutTitle } = fb
     useSeoMeta({
