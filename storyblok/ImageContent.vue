@@ -11,7 +11,7 @@ const contentClass = computed(() => {
 
 const wrapperClass = computed(() => {
   return [
-    props.blok.order === 'right' ? 'flex-col-reverse md:flow-row' : 'flex-col md:flow-row-reverse'
+    props.blok.order === 'right' ? 'flex flex-col-reverse' : ''
   ].join(' ')
 })
 
@@ -55,42 +55,40 @@ const clipPoints = computed(() => {
     v-editable="blok"
     :class-name="blok.class"
   >
-    <div :class="['flex items-center gap-6 relative', wrapperClass]">
-      <div :class="contentClass">
-        <div class="grid md:grid-cols-2">
-          <div :class="[innerClass, 'space-y-6']">
-            <StoryblokComponent
-              v-for="content in blok.content"
-              :key="content._uid"
-              v-editable="content"
-              :blok="content"
+    <div :class="['relative', contentClass]">
+      <div :class="['md:grid md:grid-cols-2', wrapperClass]">
+        <div :class="[innerClass, 'space-y-6']">
+          <StoryblokComponent
+            v-for="content in blok.content"
+            :key="content._uid"
+            v-editable="content"
+            :blok="content"
+          />
+        </div>
+        <div :class="imageClass">
+          <div class="relative md:h-full w-full">
+            <img
+              v-if="blok.image"
+              :src="`${blok.image.filename}/m/`"
+              :alt="blok.image.alt"
+              :loading="isFirst ? 'eager' : 'lazy'"
+              :class="imgClass"
             />
-          </div>
-          <div :class="imageClass">
-            <div class="relative md:h-full w-full">
-              <img
-                v-if="blok.image"
-                :src="`${blok.image.filename}/m/`"
-                :alt="blok.image.alt"
-                :loading="isFirst ? 'eager' : 'lazy'"
-                :class="imgClass"
-              />
 
-              <svg
-                v-if="blok.imageFit !== 'contain'"
-                :class="['absolute h-10 md:h-16 w-full md:hidden', props.blok.order === 'left' ? 'top-0' : 'bottom-0']"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <polygon
-                  class="text-gray-900"
-                  fill="currentColor"
-                  :points="clipPoints"
-                />
-              </svg>
-            </div>
+            <svg
+              v-if="blok.imageFit !== 'contain'"
+              :class="['absolute h-10 md:h-16 w-full md:hidden', props.blok.order === 'left' ? 'top-0' : 'bottom-0']"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                class="text-gray-900"
+                fill="currentColor"
+                :points="clipPoints"
+              />
+            </svg>
           </div>
         </div>
       </div>
