@@ -43,12 +43,14 @@ function onClick(e: MouseEvent) {
     return
   }
 
+  e.preventDefault()
   const href = (e.target as HTMLLinkElement).href
   if (/^https?:/.test(href)) {
+    // open href in new window
+    window.open(href, '_blank')
     return
   }
 
-  e.preventDefault()
   navigateTo((new URL(href, useRequestURL()).pathname))
 }
 
