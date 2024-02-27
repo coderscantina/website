@@ -9,9 +9,12 @@ export default function useStoryblokHelpers() {
   const { locale } = useI18n()
   const defaults = { version, language: locale.value }
   async function loadConfig() {
-
-    config.value = await useAsyncStoryblok('_config', defaults)
+    const { data } = await useAsyncData<ConfigStoryblok>('config', () => useAsyncStoryblok('_config', defaults)
       .catch(() => ref(null))
+    )
+    if (data.value) {
+      config.value = data.value
+    }
   }
 
   function setMetaFromPage(content: Pick<PageStoryblok, 'metatags' | 'ogImage'>, fallbacks?: UseSeoMetaInput) {
@@ -48,9 +51,7 @@ export default function useStoryblokHelpers() {
     })
   }
 
-  callOnce(async() => {
-    await loadConfig()
-  })
+  loadConfig()
 
   return {
     config,
