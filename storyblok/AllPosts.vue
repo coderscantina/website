@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import type { AllPostsStoryblok, PostStoryblok } from '~/storyblok/types'
 
-defineProps<{blok: AllPostsStoryblok}>()
+defineProps<{ blok: AllPostsStoryblok }>()
 
 const { defaults } = useStoryblokHelpers()
 
-const posts = ref<PostStoryblok[]>(null)
+const posts = useState<PostStoryblok[]>('stories', () => [])
 const storyblokApi = useStoryblokApi()
-const { data } = await storyblokApi.get('cdn/stories', {
-  ...defaults,
-  starts_with: 'blog',
-  is_startpage: false,
+
+await callOnce(async() => {
+  const { data } = await storyblokApi.get('cdn/stories', {
+    ...defaults,
+    starts_with: 'blog',
+    is_startpage: false,
+  })
+  posts.value = data.stories
 })
-posts.value = data.stories
 
 </script>
 
