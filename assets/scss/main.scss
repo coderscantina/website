@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --grid-margin: .75rem;
-    @apply md:[--grid-margin:8vw] xl:[--grid-margin:16vw];
+    @apply md:[--grid-margin:8vw] xl:[--grid-margin:16vw] 2xl:[--grid-margin:20vw];
   }
 
   .content-grid {
