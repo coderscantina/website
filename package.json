@@ -5,12 +5,13 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "dev-ssl": "nuxt dev --https --ssl-cert localhost.crt --ssl-key localhost.key",
+    "dev-ssl": "nuxt dev --https --ssl-cert /opt/homebrew/etc/nginx/ssl/localhost.crt --ssl-key /opt/homebrew/etc/nginx/ssl/nginx.key",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts --fix",
-    "storyblok-generate-types": "./node_modules/storyblok/src/cli.js pull-components --space=276732 && storyblok-generate-ts source=./components.276732.json target=./storyblok/types/index && rm ./components.276732.json",
+    "storyblok-login": "storyblok login",
+    "storyblok-generate-types": "storyblok pull-components --space=276732 && storyblok-generate-ts source=./components.276732.json target=./storyblok/types/index && rm ./*.276732.json",
     "check": "nuxi typecheck && yarn lint"
   },
   "dependencies": {
