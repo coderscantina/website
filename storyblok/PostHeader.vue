@@ -12,6 +12,7 @@ const date = computed(() => {
 
 <template>
   <ContentWrapper
+    v-editable="blok"
     class-name="narrow"
     class="-mb-12"
   >
