@@ -14,7 +14,7 @@ const date = computed(() => {
   <ContentWrapper
     v-editable="blok"
     class-name="narrow"
-    class="-mb-12"
+    class="-mb-10"
   >
     <p class="text-gray-500 text-xs uppercase tracking-wider">{{ date }}</p>
     <Headline
