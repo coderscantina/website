@@ -379,6 +379,7 @@ export interface PostStoryblok {
     | SnippetStoryblok
     | VideoEmbedStoryblok
   )[];
+  ogImage: AssetStoryblok;
   _uid: string;
   component: "Post";
   [k: string]: any;
@@ -398,6 +399,7 @@ export interface SimpletextStoryblok {
   cols?: "" | "2-8" | "3-9" | "4-10" | "6-12" | "7-13" | "8-14";
   class?: "" | "narrow";
   align?: "left" | "center" | "right";
+  size?: "" | "xl" | "2xl";
   _uid: string;
   component: "simpletext";
   [k: string]: any;

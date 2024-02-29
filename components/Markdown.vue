@@ -58,7 +58,7 @@ function onClick(e: MouseEvent) {
 
 <template>
   <div
-    class="prose prose-lg"
+    class="prose"
     @click.capture="onClick"
     v-html="html"
   />

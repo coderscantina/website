@@ -14,11 +14,17 @@ const alignClass = computed(() => {
 })
 
 const bodyTextClass = computed(() => {
-  return {
+  return [{
     left: '',
     center: 'mx-auto',
     right: 'ml-auto',
-  }[props.blok.align ?? 'left']
+  }[props.blok.align ?? 'left'],
+  {
+    '': 'prose-lg',
+    xl: 'prose-lg md:prose-xl',
+    '2xl': 'prose-lg md:prose-xl lg:prose-2xl',
+  }[props.blok.size ?? '']
+  ]
 })
 
 const colClass = computed(() => {
@@ -53,7 +59,7 @@ const colClass = computed(() => {
       :alt="blok.header"
       height="40"
       class="mb-3"
-    />
+    >
     <Headline
       v-else
       class="text-3xl sm:text-4xl font-bold text-gray-100 mb-3"
