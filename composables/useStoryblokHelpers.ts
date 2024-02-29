@@ -1,4 +1,5 @@
 import type { UseSeoMetaInput } from '@unhead/schema'
+import type { ISbStoriesParams } from '@storyblok/vue'
 import type { ConfigStoryblok, PageStoryblok } from '~/storyblok/types'
 
 export default function useStoryblokHelpers() {
@@ -7,7 +8,11 @@ export default function useStoryblokHelpers() {
   const { $preview } = useNuxtApp()
   const version = $preview ? 'draft' : 'published'
   const { locale } = useI18n()
-  const defaults = { version, language: locale.value }
+  const defaults: Pick<ISbStoriesParams, 'version' | 'language'> = {
+    version,
+    language: locale.value
+  }
+
   async function loadConfig() {
     const { data } = await useAsyncData<ConfigStoryblok>('config', () => useAsyncStoryblok('_config', defaults)
       .catch(() => ref(null))
@@ -51,7 +56,9 @@ export default function useStoryblokHelpers() {
     })
   }
 
-  loadConfig()
+  callOnce(async() => {
+    await loadConfig()
+  }).then()
 
   return {
     config,
