@@ -18,7 +18,10 @@ useHead({
 
 <template>
   <div>
-    <NuxtLayout name="default">
+    <NuxtLayout
+      v-if="story"
+      :layout="story.layout || 'default'"
+    >
       <StoryblokComponent
         v-if="story"
         :blok="story.content"
