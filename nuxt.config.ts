@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     head: {
       templateParams: {
         site: {
-          name: 'The Coder\'s Cantina',
+          name: 'Coder\'s Cantina',
         },
       },
       meta: [
@@ -51,8 +51,13 @@ export default defineNuxtConfig({
         {
           rel: 'icon',
           type: 'image/png',
-          sizes: '16x16',
-          href: '/favicon-16x16.png'
+          sizes: '96x96',
+          href: '/favicon-96x96.png'
+        },
+        {
+          rel: 'icon',
+          type: 'image/svg-xml',
+          href: '/favicon.svg'
         },
         {
           rel: 'manifest',
